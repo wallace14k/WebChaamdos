@@ -1,0 +1,39 @@
+﻿@page
+@model WebChamados.Pages.ChamadosModel
+@{
+}
+
+<form asp-page="/Chamados" method="post">
+    <h1>Cadastrar Chamados</h1>
+
+    <select asp-for="Usuario" aria-label="Usuario">
+        <option selected>Usuario</option>
+        <option value="wallace.paula">wallace.paula</option>
+        <option value="keller.fidelis">keller.fidelis</option>
+        <option value="henrique.evangelista">henrique.evangelista</option>
+    </select>
+
+    <select asp-for="Filial" aria-label="Filial">
+        <option selected>Filial</option>
+        <option value="Loja 1">Loja 1</option>
+        <option value="Loja 2">Loja 2</option>
+        <option value="Loja 3">Loja 3</option>
+    </select>
+
+    <div class="input-group mb-3">
+        <span asp-validation-for="IdChamados" class="input-group-text">IdChamados</span>
+        <input asp-for="IdChamados" class="form-control" placeholder="IdChamados" aria-label="IdChamados">
+
+        <span asp-validation-for="Pdv" class="input-group-text">PDV</span>
+        <input asp-for="Pdv" class="form-control" aria-label="Numero PDV">
+
+        <input asp-for="Defeito" class="form-control" placeholder="Defeito" aria-label="Defeito">
+    </div>
+
+    <div class="input-group">
+        <span asp-validation-for="Descricao" class="input-group-text" >Descrição</span>
+        <textarea asp-for="Descricao" class="form-control" aria-label="Descrição"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
