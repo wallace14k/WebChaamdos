@@ -46,7 +46,7 @@ namespace WebChamados.Pages
 
         public void DataAbertura(DateTime data)
         {           
-            data = DateTime.Now;
+            data = DateTime.Now;          
             Data = data;
         }
 
@@ -57,7 +57,7 @@ namespace WebChamados.Pages
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"INSERT INTO chamados (username, filial, idchamados, pdv, defeito, descricao, data) VALUES ('{Usuario}', '{Filial}', '{IdChamados}', '{Pdv}','{Defeito}','{Descricao}', '{Data}')";
+            mySqlCommand.CommandText = $"INSERT INTO chamados (username, filial, idchamados, pdv, defeito, descricao, data) VALUES ('{Usuario}', '{Filial}', '{IdChamados}', '{Pdv}','{Defeito}','{Descricao}', NOW())";
 
             await mySqlCommand.ExecuteReaderAsync();
 
