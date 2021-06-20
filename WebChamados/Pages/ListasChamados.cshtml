@@ -1,0 +1,51 @@
+﻿@page
+@model WebChamados.Pages.ListasChamadosModel
+@{
+}
+
+@if (Model.Chamados.Any())
+{
+ <h1>Lista de chamados</h1>   
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Filial</th>
+                <th>IdChamados</th>
+                <th>Pdv</th>
+                <th>Defeito</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>SLA</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var chamados in Model.Chamados)
+            {
+                <tr>
+                    <td>@chamados.Usuario</td>
+                    <td>@chamados.Filial</td>
+                    <td>@chamados.IdChamados</td>
+                    <td>@chamados.Pdv</td>
+                    <td>@chamados.Defeito</td>
+                    <td>@chamados.Descricao</td>
+                    <td>@chamados.Data</td>
+                    <td>SLA</td>
+                    <td>
+                        <a class="btn btn-warning">
+                            Editar
+                        </a>
+                        <a class="btn btn-danger">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>           
+    </table>
+}
+else
+{
+    <h2 class="text-center">Nenhum chamado encontrado</h2>
+}

@@ -9,9 +9,10 @@ using MySql.Data.MySqlClient;
 
 namespace WebChamados.Pages
 {
-    
     public class ChamadosModel : PageModel
     {
+        public List<UsuarioViewModel> UsuariosView { get; set; }
+
         [Required(ErrorMessage = "É obrigatorio informar o Usuário")]
         [BindProperty(SupportsGet = true)]
         public string Usuario { get; set; }
@@ -60,8 +61,23 @@ namespace WebChamados.Pages
             mySqlCommand.CommandText = $"INSERT INTO chamados (username, filial, idchamados, pdv, defeito, descricao, data) VALUES ('{Usuario}', '{Filial}', '{IdChamados}', '{Pdv}','{Defeito}','{Descricao}', NOW())";
 
             await mySqlCommand.ExecuteReaderAsync();
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+            UsuariosView = new List<UsuarioViewModel>();
+            while (await reader.ReadAsync())
+            {
+                UsuariosView.Add(new UsuarioViewModel
+                {
+                    Usuario = reader.GetString(1),                   
+                });
+                
+            }
 
             return new JsonResult(new { Msg = "Chamado registrado!" });
         }
+    }
+    public class UsuarioViewModel
+    {
+        public string  Usuario { get; set; }
     }
 }
