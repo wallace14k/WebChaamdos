@@ -1,11 +1,14 @@
 ﻿@page
-@model WebChamados.Pages.ChamadosModel
+@model WebChamados.Pages.editarModel
 @{
 }
 
-    <form asp-page="/Chamados" method="post" data-ajax="true" data-ajax-method="post"
-          data-ajax-Success="Sucesso" data-ajax-falilure="Falha">
-        <h1>Cadastrar Chamados</h1>
+
+<body bground: #E3FBE3>
+
+    <form asp-page="/editar" method="post">
+        <h2>Editar Chamados</h2>
+        <input type="hidden" asp-for="IdChamados" />
         <select class="form-control" asp-for="Usuario">
             <option value="wallace.paula">wallace.paula</option>>
             <option value="keller.">fideles</option>>
@@ -34,6 +37,6 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
     </form>
-    
+</body>

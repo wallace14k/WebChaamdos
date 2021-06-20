@@ -5,10 +5,11 @@
 
 @if (Model.Chamados.Any())
 {
- <h1>Lista de chamados</h1>   
+    <h1>Lista de chamados</h1>
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Usuario</th>
                 <th>Filial</th>
                 <th>IdChamados</th>
@@ -24,6 +25,7 @@
             @foreach (var chamados in Model.Chamados)
             {
                 <tr>
+                    <td>@chamados.Id</td>
                     <td>@chamados.Usuario</td>
                     <td>@chamados.Filial</td>
                     <td>@chamados.IdChamados</td>
@@ -33,19 +35,34 @@
                     <td>@chamados.Data</td>
                     <td>SLA</td>
                     <td>
-                        <a class="btn btn-warning">
+                        <a asp-page="/editar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-warning">
                             Editar
                         </a>
-                        <a class="btn btn-danger">
+                        <a asp-page="/editar" asp-page-handler="Apagar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-danger">
                             Excluir
                         </a>
                     </td>
                 </tr>
             }
-        </tbody>           
+        </tbody>
     </table>
+
+    <nav aria-label="Navegação de página exemplo">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Próximo</a>
+            </li>
+        </ul>
+    </nav>
 }
 else
 {
     <h2 class="text-center">Nenhum chamado encontrado</h2>
 }
+

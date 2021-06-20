@@ -58,3 +58,5 @@ C:\Users\walla\OneDrive\Área de Trabalho\Nova pasta\WebChamados\WebChamados\obj
 C:\Users\walla\OneDrive\Área de Trabalho\Nova pasta\WebChamados\WebChamados\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
 C:\Users\walla\OneDrive\Área de Trabalho\Nova pasta\WebChamados\WebChamados\obj\Debug\net5.0\Razor\Pages\Chamados.cshtml.g.cs
 C:\Users\walla\OneDrive\Área de Trabalho\Nova pasta\WebChamados\WebChamados\obj\Debug\net5.0\Razor\Pages\ListasChamados.cshtml.g.cs
+C:\Users\walla\OneDrive\Área de Trabalho\Nova pasta\WebChamados\WebChamados\obj\Debug\net5.0\Razor\Pages\editar.cshtml.g.cs
+C:\Users\walla\OneDrive\Área de Trabalho\Nova pasta\WebChamados\WebChamados\bin\Debug\net5.0\libman.json

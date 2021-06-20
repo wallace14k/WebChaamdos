@@ -12,14 +12,15 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto">
                                 <h3 class="login-heading mb-4">Controle chamados S&I!</h3>
-                                <form asp-controller="Login" asp-action="Logar" method="post">
+                                <form asp-controller="Login" asp-action="Logar" method="post" data-ajax="true" data-ajax-method="post"
+                                      data-ajax-Success="Sucesso" data-ajax-failure="Falha">
                                     <div class="form-label-group">
                                         <input type="text" id="username" name ="username" class="form-control" placeholder="Login" required autofocus>
-                                        <label for="inputEmail">Login</label>
+                                        <label for="username">Login</label>
                                     </div>
 
                                     <div class="form-label-group">
-                                        <input type="password" id="Senha" name="senha" class="form-control" placeholder="Password" required>
+                                        <input type="password" id="senha" name="senha" class="form-control" placeholder="Password" required>
                                         <label for="senha">Password</label>
                                     </div>
 

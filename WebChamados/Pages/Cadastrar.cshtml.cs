@@ -32,15 +32,19 @@ namespace WebChamados.Pages
         }
         public async Task<JsonResult> OnPostAsync()
         {
+            
+
             MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"INSERT INTO usuario (nome, username, senha) VALUES (' {Usuario}', '{Senha}')";
+            mySqlCommand.CommandText = $"INSERT INTO usuario (nome, username, senha) VALUES ('{Nome}' , ' {Usuario}', '{Senha}')";
 
             await mySqlCommand.ExecuteReaderAsync();
                      
             return new JsonResult(new { Msg = "Usuario Cadastrado!" });
+
+            
         }
     }
 }

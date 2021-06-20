@@ -7,12 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
 
+
 namespace WebChamados.Pages
 {
     public class ChamadosModel : PageModel
     {
-        public List<UsuarioViewModel> UsuariosView { get; set; }
-
         [Required(ErrorMessage = "É obrigatorio informar o Usuário")]
         [BindProperty(SupportsGet = true)]
         public string Usuario { get; set; }
@@ -22,8 +21,8 @@ namespace WebChamados.Pages
         [BindProperty(SupportsGet = true)]
         public string Filial { get; set; }
 
-        [Required(ErrorMessage ="Numero do Chamado necessario")]
-        [BindProperty(SupportsGet =true)]
+        [Required(ErrorMessage = "Numero do Chamado necessario")]
+        [BindProperty(SupportsGet = true)]
         public int IdChamados { get; set; }
 
         [Required(ErrorMessage = "É obrigatorio informar o PDV")]
@@ -46,8 +45,8 @@ namespace WebChamados.Pages
         }
 
         public void DataAbertura(DateTime data)
-        {           
-            data = DateTime.Now;          
+        {
+            data = DateTime.Now;
             Data = data;
         }
 
@@ -59,25 +58,10 @@ namespace WebChamados.Pages
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandText = $"INSERT INTO chamados (username, filial, idchamados, pdv, defeito, descricao, data) VALUES ('{Usuario}', '{Filial}', '{IdChamados}', '{Pdv}','{Defeito}','{Descricao}', NOW())";
-
-            await mySqlCommand.ExecuteReaderAsync();
+           
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
-
-            UsuariosView = new List<UsuarioViewModel>();
-            while (await reader.ReadAsync())
-            {
-                UsuariosView.Add(new UsuarioViewModel
-                {
-                    Usuario = reader.GetString(1),                   
-                });
-                
-            }
 
             return new JsonResult(new { Msg = "Chamado registrado!" });
         }
-    }
-    public class UsuarioViewModel
-    {
-        public string  Usuario { get; set; }
     }
 }

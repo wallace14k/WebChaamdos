@@ -56,6 +56,8 @@ namespace WebChamados.Controllers
                     return Json(new { Msg = "Usuario logado com sucesso!" });
                 }           
             return Json(new { Msg = "Usuario nao encontrado!" });
+
+            await mySqlConnection.CloseAsync();
         }
 
         public async Task<IActionResult> Logout()
