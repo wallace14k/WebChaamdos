@@ -16,3 +16,11 @@ function Falha(data) {
        
     });
 }
+
+function Sucesso(Login) {
+    Swal.fire(
+        'Sucesso!',
+        Login.msg,
+        'success'
+    );
+}

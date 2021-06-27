@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -17,12 +17,12 @@ namespace WebChamados.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return Json( new { Msg = " Usuario logado"});
+                return Json(new { Msg = " Usuario logado" });
             }
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> LogarAsync(string username, string senha, bool manterLogado)
+        public async Task LogarAsync(string username, string senha, bool manterLogado)
         {
             MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
             await mySqlConnection.OpenAsync();
@@ -31,9 +31,9 @@ namespace WebChamados.Controllers
             mySqlCommand.CommandText = $"SELECT * FROM usuario WHERE username = '{username}' AND senha = '{senha}'";
 
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
-           
-                if(await reader.ReadAsync())
-                {
+
+            if (await reader.ReadAsync())
+            {
                 int id = reader.GetInt32(0);
                 string name = reader.GetString(1);
 
@@ -43,19 +43,19 @@ namespace WebChamados.Controllers
                     new Claim(ClaimTypes.Name,name)
                 };
                 var identity = new ClaimsIdentity(direitosAcessos, "identity.Login");
-                var userPrincipal = new ClaimsPrincipal(new[] { identity});
+                var userPrincipal = new ClaimsPrincipal(new[] { identity });
 
                 await HttpContext.SignInAsync(userPrincipal,
                     new AuthenticationProperties
                     {
                         IsPersistent = manterLogado,
                         ExpiresUtc = DateTime.Now.AddHours(1)
-                    }) ;
+                    });
 
 
-                    return Json(new { Msg = "Usuario logado com sucesso!" });
-                }           
-            return Json(new { Msg = "Usuario nao encontrado!" });
+                
+            }
+            
 
             await mySqlConnection.CloseAsync();
         }

@@ -24,25 +24,34 @@
         <tbody>
             @foreach (var chamados in Model.Chamados)
             {
-                <tr>
-                    <td>@chamados.Id</td>
-                    <td>@chamados.Usuario</td>
-                    <td>@chamados.Filial</td>
-                    <td>@chamados.IdChamados</td>
-                    <td>@chamados.Pdv</td>
-                    <td>@chamados.Defeito</td>
-                    <td>@chamados.Descricao</td>
-                    <td>@chamados.Data</td>
-                    <td>SLA</td>
-                    <td>
-                        <a asp-page="/editar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-warning">
-                            Editar
-                        </a>
-                        <a asp-page="/editar" asp-page-handler="Apagar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-danger">
-                            Excluir
-                        </a>
-                    </td>
-                </tr>
+            <tr>
+                <td>@chamados.Id</td>
+                <td>@chamados.Usuario</td>
+                <td>@chamados.Filial</td>
+                <td>@chamados.IdChamados</td>
+                <td>@chamados.Pdv</td>
+                <td>@chamados.Defeito</td>
+                <td><textarea>@chamados.Descricao</textarea></td>
+                <td>@chamados.Data</td>
+                <td>@if (chamados.dataVen <= chamados.Dataatual)
+                {
+                    <font color="#008000">No prazo</font>
+                }
+                else
+                {
+                    <font color="#DC143C">Vencido</font>
+                }
+                </td>
+                <td>
+                    <a asp-page="/editar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-warning">
+                        Editar
+                    </a>
+                    <a asp-page="/editar" asp-page-handler="Apagar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-danger">
+                        Excluir
+                    </a>
+                </td>
+
+            </tr>
             }
         </tbody>
     </table>

@@ -10,8 +10,11 @@ using MySql.Data.MySqlClient;
 
 namespace WebChamados.Pages
 {
+
     public class ListasChamadosModel : PageModel
     {
+
+
         public List<ChamadosViewModel> Chamados { get; set; }
         public async Task OnGet()
         {
@@ -25,9 +28,11 @@ namespace WebChamados.Pages
 
             Chamados = new List<ChamadosViewModel>();
 
+
+
             while (await reader.ReadAsync())
             {
-                Chamados.Add(new ChamadosViewModel
+                Chamados.Add( new ChamadosViewModel
                 {
                     Id = reader.GetInt32(0),
                     Usuario = reader.GetString(2),
@@ -37,6 +42,7 @@ namespace WebChamados.Pages
                     Defeito = reader.GetString(5),
                     Descricao = reader.GetString(6),
                     Data = reader.GetDateTime(7),
+
                 });
             }
 
@@ -44,7 +50,7 @@ namespace WebChamados.Pages
         }
     }
 
-    public class ChamadosViewModel
+    public class ChamadosViewModel :SlaRetorno
     {
         public int Id { get; set; }
         public string Usuario { get; set; }
@@ -53,7 +59,27 @@ namespace WebChamados.Pages
         public string Pdv { get; set; }
         public string Defeito { get; set; }
         public string Descricao { get; set; }
-        public DateTime Data { get; set; }
+        public string Sla { get; set; }
+        public DateTime dataVen { get => Data.AddHours(8); }
+
 
     }
+    public class SlaRetorno
+    {
+        public DateTime Data { get; set; }
+        public DateTime Dataatual { get => DateTime.Now; }
+    }
 }
+     
+
+
+
+
+
+    
+
+
+
+
+
+
