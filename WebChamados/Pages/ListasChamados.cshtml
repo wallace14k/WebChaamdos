@@ -33,13 +33,13 @@
                 <td>@chamados.Defeito</td>
                 <td><textarea>@chamados.Descricao</textarea></td>
                 <td>@chamados.Data</td>
-                <td>@if (chamados.dataVen <= chamados.Dataatual)
-                {
-                    <font color="#008000">No prazo</font>
+                <td>@if (chamados.dataVen > chamados.Dataatual)
+                {                 
+                <font color="#008000">No prazo</font>
                 }
                 else
                 {
-                    <font color="#DC143C">Vencido</font>
+                <font color="#008000">No prazo</font>
                 }
                 </td>
                 <td>
