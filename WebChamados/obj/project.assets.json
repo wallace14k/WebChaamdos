@@ -1982,11 +1982,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wallace.paula\\Source\\Repos\\wallace14k\\WebChamados\\WebChamados\\WebChamados.csproj",
+      "projectUniqueName": "C:\\Users\\wallace.paula\\Source\\Repos\\WebChamados\\WebChamados\\WebChamados.csproj",
       "projectName": "WebChamados",
-      "projectPath": "C:\\Users\\wallace.paula\\Source\\Repos\\wallace14k\\WebChamados\\WebChamados\\WebChamados.csproj",
+      "projectPath": "C:\\Users\\wallace.paula\\Source\\Repos\\WebChamados\\WebChamados\\WebChamados.csproj",
       "packagesPath": "C:\\Users\\wallace.paula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wallace.paula\\Source\\Repos\\wallace14k\\WebChamados\\WebChamados\\obj\\",
+      "outputPath": "C:\\Users\\wallace.paula\\Source\\Repos\\WebChamados\\WebChamados\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wallace.paula\\AppData\\Roaming\\NuGet\\NuGet.Config",

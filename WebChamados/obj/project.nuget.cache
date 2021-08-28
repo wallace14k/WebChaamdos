@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jf0flN+ZbcywFqbJvwKrd7EPgQIIgcI1IFx7qaI7xHOnP031PwpMgIB5+z5YDvwKLpeE8OqGvUaTwtHjSCSTtQ==",
+  "dgSpecHash": "frCpR1jN19eJIc5hHLN1U16CUgoI4ajqUdPprSP6KxYz4Xh29SrRB94MAOmbwyJMk/iGv7ON4qdJJu+or94Lpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wallace.paula\\Source\\Repos\\wallace14k\\WebChamados\\WebChamados\\WebChamados.csproj",
+  "projectFilePath": "C:\\Users\\wallace.paula\\Source\\Repos\\WebChamados\\WebChamados\\WebChamados.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wallace.paula\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\wallace.paula\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

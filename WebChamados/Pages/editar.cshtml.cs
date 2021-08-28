@@ -24,7 +24,7 @@ namespace WebChamados.Pages
 
         [Required(ErrorMessage = "Numero do Chamado necessario")]
         [BindProperty(SupportsGet = true)]
-        public string IdChamados { get; set; }
+        public int IdChamados { get; set; }
 
         [Required(ErrorMessage = "É obrigatorio informar o PDV")]
         [BindProperty(SupportsGet = true)]
@@ -38,7 +38,7 @@ namespace WebChamados.Pages
         public string Descricao { get; set; }
         public async Task OnGet()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=webchamados;password=root");
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
@@ -51,7 +51,7 @@ namespace WebChamados.Pages
                 Id = reader.GetInt32(0);
                 Usuario = reader.GetString(2);
                 Filial = reader.GetString(3);
-                IdChamados = reader.GetString(1);
+                IdChamados = reader.GetInt32(1);
                 Pdv = reader.GetString(4);
                 Defeito = reader.GetString(5);
                 Descricao = reader.GetString(6);
@@ -62,12 +62,12 @@ namespace WebChamados.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=webchamados;password=root");
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"UPDATE chamados  SET username = '{Usuario}' , filial = '{Filial}' , idchamados = '{IdChamados}' , pdv = '{Pdv}' , defeito = '{Defeito}' , descricao ='{Descricao}' WHERE idchamados = {IdChamados}";
-            //UPDATE chamados`SET  idchamados = '{IdChamados}', username = '{}', `filial` = '{}', `pdv` = '{}', `defeito` = '{}', `descricao` = ' {}' WHERE idchamados = '{IdChamados}';
+            mySqlCommand.CommandText = $"UPDATE chamados  SET  idchamados = '{IdChamados}' , username = '{Usuario}' , filial = '{Filial}' , pdv = '{Pdv}' , defeito = '{Defeito}' , descricao = '{Descricao}' WHERE idchamados = '{IdChamados}' ";
+            //UPDATE chamados`SET  idchamados = '{`idchamados`}', username = '{}', `filial` = '{`pdv`}', `pdv` = '{}', `defeito` = '{}', `descricao` = ' {}' WHERE idchamados = '{IdChamados}';
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
             return new JsonResult(new { Msg = "Chamado editado! " });
@@ -76,11 +76,11 @@ namespace WebChamados.Pages
 
         public async Task<IActionResult> OnGetApagar()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=webchamados;password=root");
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"DELETE FROM chamados WHERE idchamados = '{IdChamados}'";
+            mySqlCommand.CommandText = $"UPDATE chamados  SET stexcluido = 1 WHERE idchamados = '{IdChamados}'";
 
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
 

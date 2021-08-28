@@ -18,11 +18,11 @@ namespace WebChamados.Pages
         public List<ChamadosViewModel> Chamados { get; set; }
         public async Task OnGet()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=webchamados;password=root");
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"SELECT * FROM chamados";
+            mySqlCommand.CommandText = $"SELECT * FROM chamados ORDER BY data";
 
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
@@ -42,7 +42,7 @@ namespace WebChamados.Pages
                     Defeito = reader.GetString(5),
                     Descricao = reader.GetString(6),
                     Data = reader.GetDateTime(7),
-
+                    StExcluido = reader.GetBoolean(8)
                 });
             }
 
@@ -61,7 +61,8 @@ namespace WebChamados.Pages
         public string Descricao { get; set; }
         public string Sla { get; set; }
         public DateTime dataVen { get => Data.AddHours(8); }
-
+        public bool StExcluido { get; set; }
+        public bool StValido { get=> true; }
 
     }
     public class SlaRetorno

@@ -6,12 +6,18 @@
 
 <body bground: #E3FBE3>
 
-    <form asp-page="/editar" method="post">
+    <form asp-page="/editar" method="post"data-ajax="true" data-ajax-method="post"
+          data-ajax-Success="Sucesso" data-ajax-falilure="Falha">
         <h2>Editar Chamados</h2>
         <input type="hidden" asp-for="IdChamados" />
         <select class="form-control" asp-for="Usuario">
             <option value="wallace.paula">wallace.paula</option>>
-            <option value="keller.">fideles</option>>
+            <option value="keller.fideles">keller.fideles</option>>
+            <option value="henrique.gregorio">"henrique.gregorio</option>>
+            <option value="vitor.santos">vitor.santos</option>>
+            <option value="andre.siqueira">andre.siqueira</option>>
+            <option value="lohan.guiden">lohan.guiden</option>>
+            <option value="andres.guide">andres.guide</option>>
         </select>
         <select class="form-control" name="Filial">
             @for (var i = 1; i <= 71; i++)
@@ -21,6 +27,7 @@
         </select>
 
         <div class="input-group mb-3">
+            
             <span asp-validation-for="IdChamados" class="input-group-text">IdChamados</span>
             <input asp-for="IdChamados" class="form-control" placeholder="IdChamados" aria-label="IdChamados">
 

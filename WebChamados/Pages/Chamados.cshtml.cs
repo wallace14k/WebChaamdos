@@ -53,15 +53,17 @@ namespace WebChamados.Pages
 
         public async Task<JsonResult> OnPostAsync()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=bdwallace;password=123456789");
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost;user id=root;database=webchamados;password=root");
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"INSERT INTO chamados (username, filial, idchamados, pdv, defeito, descricao, data) VALUES ('{Usuario}', '{Filial}', '{IdChamados}', '{Pdv}','{Defeito}','{Descricao}', NOW())";
-           
+            mySqlCommand.CommandText = $"INSERT INTO chamados (`idchamados`, `username`, `filial`, `pdv`, `defeito`, `descricao`, `data` ,`stexcluido`) VALUES ( '{IdChamados}', '{Usuario}', '{Filial}', '{Pdv}', '{Defeito}', '{Descricao}', now() , 0);";
+                                                                                                                                    
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
             return new JsonResult(new { Msg = "Chamado registrado!" });
+
+            await mySqlConnection.CloseAsync();
         }
     }
 }

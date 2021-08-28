@@ -5,56 +5,62 @@
 
 @if (Model.Chamados.Any())
 {
-    <h1>Lista de chamados</h1>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Usuario</th>
-                <th>Filial</th>
-                <th>IdChamados</th>
-                <th>Pdv</th>
-                <th>Defeito</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>SLA</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var chamados in Model.Chamados)
-            {
-            <tr>
-                <td>@chamados.Id</td>
-                <td>@chamados.Usuario</td>
-                <td>@chamados.Filial</td>
-                <td>@chamados.IdChamados</td>
-                <td>@chamados.Pdv</td>
-                <td>@chamados.Defeito</td>
-                <td><textarea>@chamados.Descricao</textarea></td>
-                <td>@chamados.Data</td>
-                <td>@if (chamados.dataVen > chamados.Dataatual)
-                {                 
-                <font color="#008000">No prazo</font>
-                }
-                else
+    <form asp-page="/editar" method="post" data-ajax="true" data-ajax-method="post"
+          data-ajax-Success="Sucesso" data-ajax-falilure="Falha">
+        <h1>Lista de chamados</h1>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Usuario</th>
+                    <th>Filial</th>
+                    <th>IdChamados</th>
+                    <th>Pdv</th>
+                    <th>Defeito</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>SLA</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var chamados in Model.Chamados)
                 {
-                <font color="#008000">No prazo</font>
+                    <tr>
+                        @if (chamados.StExcluido != chamados.StValido)
+                        {
+                            <td>@chamados.Id</td>
+                            <td>@chamados.Usuario</td>
+                            <td>@chamados.Filial</td>
+                            <td>@chamados.IdChamados</td>
+                            <td>@chamados.Pdv</td>
+                            <td>@chamados.Defeito</td>
+                            <td><textarea>@chamados.Descricao</textarea></td>
+                            <td>@chamados.Data</td>
+                            <td>
+                                @if (chamados.dataVen > chamados.Dataatual)
+                                {
+                                    <font color="#008000">No prazo</font>
+                                }
+                                else
+                                {
+                                    <font color="#ff0000">vencido</font>
+                                }
+                            </td>
+                            <td>
+                                <a asp-page="/editar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-warning">
+                                    Editar
+                                </a>
+                                <a asp-page="/editar" asp-page-handler="Apagar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-danger">
+                                    Excluir
+                                </a>
+                            </td>
+                        }
+                    </tr>
                 }
-                </td>
-                <td>
-                    <a asp-page="/editar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-warning">
-                        Editar
-                    </a>
-                    <a asp-page="/editar" asp-page-handler="Apagar" asp-route-IdChamados="@chamados.IdChamados" class="btn btn-danger">
-                        Excluir
-                    </a>
-                </td>
-
-            </tr>
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </form>
 
     <nav aria-label="Navegação de página exemplo">
         <ul class="pagination justify-content-center">

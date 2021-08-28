@@ -3,37 +3,42 @@
 @{
 }
 
-    <form asp-page="/Chamados" method="post" data-ajax="true" data-ajax-method="post"
-          data-ajax-Success="Sucesso" data-ajax-falilure="Falha">
-        <h1>Cadastrar Chamados</h1>
-        <select class="form-control" asp-for="Usuario">
-            <option value="wallace.paula">wallace.paula</option>>
-            <option value="keller.">fideles</option>>
-        </select>
-        <select class="form-control" name="Filial">
-            @for (var i = 1; i <= 71; i++)
-            {
-                <option>Loja @(i)</option>
-            }
-        </select>
+<form asp-page="/Chamados" method="post" data-ajax="true" data-ajax-method="post"
+      data-ajax-Success="Sucesso" data-ajax-falilure="Falha">
+    <h1>Cadastrar Chamados</h1>
+    <select class="form-control" asp-for="Usuario">
+        <option value="wallace.paula">wallace.paula</option>>
+        <option value="keller.fideles">keller.fideles</option>>
+        <option value="henrique.gregorio">henrique.gregorio</option>>
+        <option value="vitor.santos">vitor.santos</option>>
+        <option value="andre.siqueira">andre.siqueira</option>>
+        <option value="lohan.guiden">lohan.guiden</option>>
+        <option value="andres.guide">andres.guide</option>>
+    </select>
+    <select class="form-control" name="Filial">
+        @for (var i = 1; i <= 71; i++)
+        {
+            <option>Loja @(i)</option>
+        }
+    </select>
 
-        <div class="input-group mb-3">
-            <span asp-validation-for="IdChamados" class="input-group-text">IdChamados</span>
-            <input asp-for="IdChamados" class="form-control" placeholder="IdChamados" aria-label="IdChamados">
+    <div class="input-group mb-3">
+        <span asp-validation-for="IdChamados" class="input-group-text">IdChamados</span>
+        <input asp-for="IdChamados" class="form-control" placeholder="IdChamados" aria-label="IdChamados">
 
-            <span asp-validation-for="Pdv" class="input-group-text">PDV</span>
-            <input asp-for="Pdv" class="form-control" aria-label="Numero PDV">
+        <span asp-validation-for="Pdv" class="input-group-text">PDV</span>
+        <input asp-for="Pdv" class="form-control" aria-label="Numero PDV">
 
-            <input asp-for="Defeito" class="form-control" placeholder="Defeito" aria-label="Defeito">
-        </div>
+        <input asp-for="Defeito" class="form-control" placeholder="Defeito" aria-label="Defeito">
+    </div>
 
-        <div class="input-group">
-            <span asp-validation-for="Descricao" class="input-group-text">Descrição</span>
-            <textarea asp-for="Descricao" class="form-control" aria-label="Descrição"></textarea>
-        </div>
+    <div class="input-group">
+        <span asp-validation-for="Descricao" class="input-group-text">Descrição</span>
+        <textarea asp-for="Descricao" class="form-control" aria-label="Descrição"></textarea>
+    </div>
 
 
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </form>
-    
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
